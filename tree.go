@@ -58,6 +58,22 @@ func PostOrder(root *TreeNode, ans *[]int) {
 	*ans = append(*ans, root.Val)
 }
 
+func LeverlOrder(root *TreeNode, ans *[][]int) {
+	dfs(root, 0, ans)
+}
+
+func dfs(node *TreeNode, length int, res *[][]int) {
+	if node == nil {
+		return
+	}
+	for len(*res) <= length {
+		*res = append(*res, []int{})
+	}
+	(*res)[length] = append((*res)[length], node.Val)
+	dfs(node.Left, length+1, res)
+	dfs(node.Right, length+1, res)
+}
+
 func insert(root *TreeNode, val int) *TreeNode {
 	if root == nil {
 		return &TreeNode{Val: val}

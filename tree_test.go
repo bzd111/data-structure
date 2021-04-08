@@ -34,6 +34,16 @@ func TestPostOrder(t *testing.T) {
 	}
 }
 
+func TestLevelOrder(t *testing.T) {
+	root := NewBinaryTree()
+	result := [][]int{}
+	LeverlOrder(root, &result)
+	ans := [][]int{{5}, {3, 7}, {1, 4, 6}}
+	if !reflect.DeepEqual(result, ans) {
+		t.Errorf("got %v, want %v", result, ans)
+	}
+}
+
 func TestNewBST(t *testing.T) {
 	nums := []int{1, 2, 3, 4, 5, 6, 7}
 	root := NewBST(nums)
